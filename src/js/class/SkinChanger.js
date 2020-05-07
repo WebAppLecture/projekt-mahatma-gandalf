@@ -1,28 +1,27 @@
 export class SkinChanger {
 
-    constructor(headNode, skin, skinsheet) {
+    constructor(headNode, skins, skinsheet) {
         this.headNode = headNode;
-        this.skin = skin;
+        this.skins = skins;
         this.skinsheet = skinsheet
-        this.createButton();
+        this.initskins();
     }
 
- 
-
-    createButton(){
+    initskins(){
+        this.skins.forEach(skin => { this.createButton(skin)
+            
+        });;
+    }
+    
+    createButton(skin){
         let btn = document.createElement("BUTTON");
-        btn.innerHTML = this.skin;
-        btn.addEventListener("click", this.clickedButton.bind(this));
+        btn.innerHTML = skin;
         this.headNode.appendChild(btn);
+        btn.addEventListener("click", function(){
+            skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css")
+        });
+        
     }
-
-    clickedButton() {
-        this.skinsheet.setAttribute("href", "./src/css/skins/" + this.skin + "/" + this.skin + ".css")
-    }
-
-
-
-
 
     /*
     set activeSkin(name) {
@@ -47,7 +46,6 @@ export class SkinChanger {
         index = index < 0 ? this.skins.length - 1 : index;
         this.activeSkin = this.skins[index];
     }
-
     */
 
 }
