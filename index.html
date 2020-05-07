@@ -1,8 +1,63 @@
 <html>
     <head>
-        <link rel="stylesheet" href="src/css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="./src/css/main.css"/>
+        <link rel="stylesheet" id="skinsheet" href="./src/css/skins/basic/basic.css">
     </head>
     <body>
+        <div class="centered gameBox">
+            <div class="logo">GameBox</div>
+            <canvas class="screen on" width="400" height="500"></canvas>
+            <nav class="menu">
+                <ul class="active">Item1</ul>
+                <ul>Item2</ul>
+                <ul>Item3</ul>
+                <ul>Item4</ul>
+                <ul>Item5</ul>
+            </nav>
+            <nav class="controls">
+                <div class="reset" id="reset">menu</div>
+                <div id="primary" class="big-button A">A</div>
+                <div id="secondary" class="big-button B">B</div>
+                <div id="up" class="d-pad up">^</div>
+                <div id="right" class="d-pad right">^</div>
+                <div id="down" class="d-pad down">^</div>
+                <div id="left" class="d-pad left">^</div>
+            </nav>
+            <nav class="skin-change">
+                <div class="previous"><</div>
+                <div class="next">></div>
+            </nav>
+            <div class="accent"></div>
+        </div>
+        <div class="skinPanel">
+            <div class="panelLogo">SkinMaker 3000</div>
+            <div class="skinSelector"></div>
+            <div class="gameBoxTitle">
+                <input type="text" name="gbTitle" id="gbTitle"
+                 placeholder="GameBox" title="insert a name for your Gamebox" 
+                 autocorrect="off" maxlength="8" autofocus>
+            </div>
+            <div class="colors">
+                <div class="colors select">
+                    <select name="colorant">
+                        <option value="gameBox">GameBox</option>
+                        <option value="Buttons">Buttons</option>
+                    </select>
+                </div>
+                <div class="colors range">
+                    <input type="range" name="color primary" id="cprimary" title="primary Color" min="0" max="360" step="0.5" value="1">
+                    <input type="range" name="color secondary" title="secondary Color" min="0" max="360" step="1">
+                    <input type="range" name="opacity" title="opacity" min="0" max="360" step="1">
+                    <input type="range" name="gradient" title="gradient" min="0" max="360" step="1">
+                </div>
+            </div>
+            <div class="actions">
+                <button type="button">Save</button>
+                <button type="button">Upload</button>
+                <button type="button">Reset</button>
+            </div>
+        </div>
     </body>
-    <script type="module" src="src/js/index.js"></script>
+    <script type="module"  src="src/js/index.js"></script>
 </html>

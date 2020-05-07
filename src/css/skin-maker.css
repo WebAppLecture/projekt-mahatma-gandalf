@@ -1,0 +1,75 @@
+.skinPanel{
+    background-color: lightblue;
+    box-sizing: border-box;
+    border: 2px solid black;
+    float: right;
+    margin: 0 5%;
+    position: relative;
+    height: calc(100vh - 16px);
+    width: 25%;
+}
+
+.panelLogo {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.skinSelect {
+    border: none;
+    width: 100%;
+    margin-top: 2vh;
+}
+
+.skinSelect input[type="radio"] {
+	visibility: hidden;
+}
+
+
+
+.skinSelect > label {
+    display: inline-block;
+	border: 1px solid #333;
+	border-radius: 0.5em;
+	padding: 0.4em 0.3em;
+	width: 4.5em;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1rem;
+    line-height: 100%;  
+}
+
+.skinSelect input:checked + label {
+	background: #ebf5d7;
+	color: #5a9900;
+	box-shadow: none;
+}
+
+.gameboxTitle {
+    display: block;
+    position: inherit;
+    width: 100%;
+    margin: 2em;
+    box-sizing: border-box;  
+}
+
+.colors {
+    display: block;
+}
+
+.select {
+    display: block;
+    margin: 1em;
+}
+
+.actions {
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+    box-sizing: border-box;
+    margin: 0.1em;
+}
+
+.range > input {
+    cursor: pointer;
+}
