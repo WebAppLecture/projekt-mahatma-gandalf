@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" href="./src/css/main.css"/>
+        <link rel="stylesheet" id="mainsheet" href="./src/css/main.css"/>
         <link rel="stylesheet" id="skinsheet" href="./src/css/skins/basic/basic.css">
     </head>
     <body>
@@ -38,22 +38,19 @@
                  placeholder="GameBox" title="insert a name for your Gamebox" 
                  autocorrect="off" maxlength="8" value="" autofocus>
             </div>
+            <div>
+                <form class="switch gmbox-btn">
+                    <div class="switch-field">
+                        <input type="radio" id="radio-one" name="switch-one" value="GameBox" autocomplete="off" checked/>
+                        <label for="radio-one">GameBox</label>
+                        <input type="radio" id="radio-two" name="switch-one" value="Controls" autocomplete="off" />
+                        <label for="radio-two">Controls</label>
+                    </div>
+            </div>
             <div class="colors">
-                <div class="colors select">
-                    <select name="colorant">
-                        <option value="gameBox">GameBox</option>
-                        <option value="Buttons">Buttons</option>
-                    </select>
-                </div>
-                <div class="colors range">
-                    <input type="range" name="color primary" id="cprimary" title="primary Color" min="0" max="360" step="0.5" value="1">
-                    <input type="range" name="color secondary" title="secondary Color" min="0" max="360" step="1">
-                    <input type="range" name="opacity" title="opacity" min="0" max="360" step="1">
-                    <input type="range" name="gradient" title="gradient" min="0" max="360" step="1">
-                </div>
             </div>
             <div class="actions">
-                <button type="button">Save</button>
+                <button type="button">Save</button> 
                 <button type="button">Upload</button>
                 <button type="button">Reset</button>
             </div>

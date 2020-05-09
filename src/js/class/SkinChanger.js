@@ -18,7 +18,9 @@ export class SkinChanger {
         btn.innerHTML = skin;
         this.headNode.appendChild(btn);
         btn.addEventListener("click", function(){
-            skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css")
+            skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css");
+            let x = window.getComputedStyle(document.querySelector("body")).getPropertyValue("background");
+            console.log(x);
         });
         
     }
