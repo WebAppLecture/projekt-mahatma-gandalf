@@ -1,3 +1,6 @@
+import { Manager } from "./Manager.js";
+
+
 export class SkinChanger {
 
     constructor(headNode, skins, skinsheet) {
@@ -8,8 +11,7 @@ export class SkinChanger {
     }
 
     initskins(){
-        this.skins.forEach(skin => { this.createButton(skin)
-            
+        this.skins.forEach(skin => { this.createButton(skin)   
         });;
     }
     
@@ -18,12 +20,12 @@ export class SkinChanger {
         btn.innerHTML = skin;
         this.headNode.appendChild(btn);
         btn.addEventListener("click", function(){
+            Manager.clearAllChanges();
             skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css");
-            let x = window.getComputedStyle(document.querySelector("body")).getPropertyValue("background");
-            console.log(x);
         });
         
     }
+
 
     /*
     set activeSkin(name) {

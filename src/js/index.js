@@ -1,5 +1,6 @@
 import { SkinChanger } from "./class/SkinChanger.js";
 import { ColorManager } from "./class/ColorManager.js";
+import { Manager } from "./class/Manager.js";
 
 let headnode = document.querySelector(".skinSelector"),
     headnodeColor = document.querySelector(".colors"),
@@ -10,7 +11,8 @@ let headnode = document.querySelector(".skinSelector"),
     outputTitle = document.querySelector(".logo"),
     skins = ["basic", "gold"],
     swtch2 = document.querySelector("#radio-two"),
-    swtch1 = document.querySelector("#radio-one");
+    swtch1 = document.querySelector("#radio-one"),
+    resetBtn = document.querySelector("#resetBtn");
     
 
 
@@ -19,7 +21,7 @@ function init(){
     initTitleChanger();
     initColorManager();
     initSwitch();
-    
+    initResetButton();    
 }
 
 
@@ -43,6 +45,10 @@ function initSwitch(){
 function initTitleChanger(){
     inputTitle.value = "";
     inputTitle.addEventListener("input", setTitle);
+}
+
+function initResetButton(){
+    resetBtn.addEventListener("click", Manager.clearAllChanges);
 }
 
 function setTitle(event) {

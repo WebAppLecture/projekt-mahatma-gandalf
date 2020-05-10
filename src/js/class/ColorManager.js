@@ -4,21 +4,25 @@
  - handles inputs and computes the hsla output String
  - sets the backgroundcolor of each targetNode via hsla String */
 
+import { Manager } from "./Manager.js";
+
 export class ColorManager{
 
     constructor(headnode,targetNode){
         this.headnode = headnode;
         this.targetNode = targetNode;
-        this.hue = 0;
         this.saturation = 100;
         this.lightness = 50;
         this.alpha = 1;
+        this.hue = 50;
         this.hslaString = ""
         this.initSlider();
+        this.createGradientBtns();
         }
 
-    // inits all Slider 
 
+    
+    // inits all Slider 
     initSlider(){
         this.createHueSlider();
         this.createSaturationSlider();
@@ -74,6 +78,25 @@ export class ColorManager{
         slider.addEventListener("input",this.sliderEventHandler.bind(this))
     }
 
+    createGradientBtns(){
+        let btn = document.createElement("BUTTON");
+        btn.setAttribute("id", "testId");
+        btn.innerHTML = "linear gradient";
+        this.headnode.appendChild(btn);
+        btn.addEventListener("click", this.gradientEventHandler.bind(this));
+    }
+
+    gradientEventHandler(event){
+        let computedColor = Manager.computeShadowOfCurrentColor(this.hue, this.saturation, this.lightness, this.alpha);
+        if(this.targetNode.length){
+            this.targetNode.forEach(element => { element.style.background = `radial-gradient(ellipse at center, ${this.hslaString} 50%, ${computedColor} 100%)`;                
+        });} else {this.targetNode.style.background = `radial-gradient(ellipse at center, ${this.hslaString} 50%, ${computedColor} 100%)`;
+        }
+    }
+
+    
+
+
     /*sliderEventHandler switches between the slider ids and sets the slider input values to the templated hsla String  */
     sliderEventHandler(event){
         switch(event.target.id){
@@ -96,7 +119,7 @@ export class ColorManager{
             default:
                  break;
         }
-        
+        this.hslaString = "";
         this.hslaString = `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%, ${this.alpha})`;
 
         /* checks if the targetNode consist of a List of Nodes (e.g "".controls") -> if so it loops trough all elements
