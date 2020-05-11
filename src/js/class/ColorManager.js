@@ -17,7 +17,7 @@ export class ColorManager{
         this.hue = 50;
         this.hslaString = ""
         this.initSlider();
-        this.createGradientBtns();
+        this.initGradientBtns();
         }
 
 
@@ -28,6 +28,13 @@ export class ColorManager{
         this.createSaturationSlider();
         this.createLightnessSlider();
         this.createAlphaSlider();
+    }
+
+    initGradientBtns(){
+        this.createLinearGradientBtn();
+        this.createRadialGradientBtn();
+
+
     }
     
     // generates Hue Slider by creating a new DOM element. Sets Atrributes and Adds an EventsListener
@@ -78,19 +85,41 @@ export class ColorManager{
         slider.addEventListener("input",this.sliderEventHandler.bind(this))
     }
 
-    createGradientBtns(){
+    createLinearGradientBtn(){
         let btn = document.createElement("BUTTON");
-        btn.setAttribute("id", "testId");
-        btn.innerHTML = "linear gradient";
+        btn.setAttribute("id", "linearGradientBtn");
+        btn.innerHTML = "--";
+        this.headnode.appendChild(btn);
+        btn.addEventListener("click", this.gradientEventHandler.bind(this));
+    }
+    createRadialGradientBtn(){
+        let btn = document.createElement("BUTTON");
+        btn.setAttribute("id", "radialGradientBtn");
+        btn.innerHTML = "o";
         this.headnode.appendChild(btn);
         btn.addEventListener("click", this.gradientEventHandler.bind(this));
     }
 
     gradientEventHandler(event){
-        let computedColor = Manager.computeShadowOfCurrentColor(this.hue, this.saturation, this.lightness, this.alpha);
+        let gradientResultString = "",
+            computedColor = Manager.computeShadowOfCurrentColor(this.hue, this.saturation, this.lightness, this.alpha),
+            complementaryColor = Manager.computeComplementaryColor(this.hue, this.lightness, this.saturation, this.alpha);
+        switch(event.target.id){
+            case "linearGradientBtn":
+                //console.log(event.target.id);
+                gradientResultString = `linear-gradient(to right, ${this.hslaString} 25%,${computedColor[0]} 60%,${computedColor[1]} 85%, ${computedColor[1]} 98%, ${this.hslaString} 100%)`
+                break;
+            case "radialGradientBtn":
+                //console.log(event.target.id);
+                gradientResultString = `radial-gradient(ellipse at center, ${this.hslaString} 50%, ${complementaryColor} 100%)`;
+                break;
+            default:
+                break;
+        }
+
         if(this.targetNode.length){
-            this.targetNode.forEach(element => { element.style.background = `radial-gradient(ellipse at center, ${this.hslaString} 50%, ${computedColor} 100%)`;                
-        });} else {this.targetNode.style.background = `radial-gradient(ellipse at center, ${this.hslaString} 50%, ${computedColor} 100%)`;
+            this.targetNode.forEach(element => { element.style.backgroundImage = gradientResultString;                
+        });} else {this.targetNode.style.backgroundImage = gradientResultString;
         }
     }
 
@@ -119,7 +148,7 @@ export class ColorManager{
             default:
                  break;
         }
-        this.hslaString = "";
+        //this.hslaString = "";
         this.hslaString = `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%, ${this.alpha})`;
 
         /* checks if the targetNode consist of a List of Nodes (e.g "".controls") -> if so it loops trough all elements

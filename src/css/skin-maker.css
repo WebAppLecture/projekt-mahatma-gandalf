@@ -57,6 +57,10 @@
     display: block;
 }
 
+.colors button{
+	float: left;
+}
+
 .select {
     display: block;
     margin: 1em;

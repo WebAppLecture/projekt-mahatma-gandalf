@@ -12,7 +12,8 @@ let headnode = document.querySelector(".skinSelector"),
     skins = ["basic", "gold"],
     swtch2 = document.querySelector("#radio-two"),
     swtch1 = document.querySelector("#radio-one"),
-    resetBtn = document.querySelector("#resetBtn");
+    resetBtn = document.querySelector("#resetBtn"),
+    saveBtn = document.querySelector("#saveBtn");
     
 
 
@@ -21,8 +22,10 @@ function init(){
     initTitleChanger();
     initColorManager();
     initSwitch();
-    initResetButton();    
+    initResetButton();  
+    initSaveButton();
 }
+
 
 
 function initColorManager(){
@@ -49,6 +52,11 @@ function initTitleChanger(){
 
 function initResetButton(){
     resetBtn.addEventListener("click", Manager.clearAllChanges);
+}
+
+function initSaveButton(){
+    saveBtn.addEventListener("click", Manager.saveAllChanges);
+
 }
 
 function setTitle(event) {
