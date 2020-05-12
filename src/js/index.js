@@ -14,6 +14,7 @@ let headnode = document.querySelector(".skinSelector"),
     swtch1 = document.querySelector("#radio-one"),
     resetBtn = document.querySelector("#resetBtn"),
     saveBtn = document.querySelector("#saveBtn");
+window.skinChanger;
     
 
 
@@ -54,8 +55,15 @@ function initResetButton(){
     resetBtn.addEventListener("click", Manager.clearAllChanges);
 }
 
+
+
 function initSaveButton(){
-    saveBtn.addEventListener("click", Manager.saveAllChanges);
+    saveBtn.addEventListener("click", function(){
+        skinChanger.deleteButtons();
+        //console.log(skins);
+        Manager.saveAllChanges(skins);
+        initSkins();
+    } );
 
 }
 

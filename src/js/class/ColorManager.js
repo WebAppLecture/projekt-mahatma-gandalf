@@ -104,6 +104,7 @@ export class ColorManager{
         let gradientResultString = "",
             computedColor = Manager.computeShadowOfCurrentColor(this.hue, this.saturation, this.lightness, this.alpha),
             complementaryColor = Manager.computeComplementaryColor(this.hue, this.lightness, this.saturation, this.alpha);
+            //console.log(complementaryColor);
         switch(event.target.id){
             case "linearGradientBtn":
                 //console.log(event.target.id);

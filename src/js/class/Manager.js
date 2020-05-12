@@ -1,17 +1,58 @@
 export class Manager{
 
+    
+
     //clearAllChanges resets all Changes
     static clearAllChanges(){
         document.querySelector(".gamebox").style.background = "";
         document.querySelectorAll(".controls > div, .skin-change > div").forEach(node => { node.style.background = "";});
+        let style = document.querySelector("style");
+        if(style){
+            style.remove();
+        }
     }
 
-    static saveAllChanges(){
-        let gamebox = document.querySelector(".gamebox"),
-            style = getComputedStyle(gamebox, null),
-            test = style.backgroundImage;
-        console.log("test" , test);
+    static saveAllChanges(skins){
+        let name = Manager.getValidName(skins);
+        if(name){
+            skins.push(name);
+            Manager.getAllChanges();         
+        }
 
+        //localStorage.setItem(name, JSON.stringify("saveObject"));
+    }
+
+    static getAllChanges(){
+        let gamebox = Manager.CONFIG.gameboxNode,
+        gameBoxstyle = getComputedStyle(gamebox, null),
+        gameboxValue = gameBoxstyle.backgroundImage !== "none" ? gameBoxstyle.backgroundImage : gameBoxstyle.backgroundColor,
+        gameboxProperty = gameBoxstyle.backgroundImage !== "none" ? "background-image:" : "background-color:",
+        gameboxSelektor = ".gamebox",
+        gameboxCss = `${gameboxSelektor} { ${gameboxProperty} ${gameboxValue};}`;
+        window.saveSkin = {Gamebox: gameboxCss};
+        console.log(saveSkin.Gamebox);
+        //let test = localStorage.getItem(localStorage.key(0));
+        //console.log(test);
+    }
+
+    static setSavedSkinValues(){
+        let head = document.querySelector("head"),
+        style = document.createElement("style");
+        head.appendChild(style);
+        style.type = "text/css";
+        style.innerHTML = saveSkin.Gamebox;
+
+    }
+
+
+
+    static getValidName(skins){
+        let name = document.querySelector(".logo").innerHTML,
+            nameLC = name.toLocaleLowerCase();
+        if(skins.includes(nameLC) ){
+            alert("Please provide a unique Name");
+    
+        } else return nameLC;
     }
 
     //computes the respective complementary of current colors
@@ -19,7 +60,7 @@ export class Manager{
         let hueValue= hue * 1,
             complementaryColor = hueValue + 180,
             complementaryColorResult = complementaryColor > 360 ? complementaryColor -=360 : complementaryColor,
-            complementaryColorString = `hsl(${complementaryColorResult}, ${saturation}%, ${lightness}%, ${alpha})`;
+            complementaryColorString = `hsl(${complementaryColorResult}, 100%, 50%, ${alpha})`;
         return complementaryColorString;
 
     }
@@ -45,7 +86,9 @@ export class Manager{
     }
 
     static CONFIG = {
-        test: "Hallo"
+        gameboxNode: document.querySelector(".gamebox"),
+        controlNodes: document.querySelectorAll(".controls > div, .skin-change > div"),
+        currentGBName: document.querySelector(".logo").innerHTML
     }
 
 

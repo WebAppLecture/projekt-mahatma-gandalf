@@ -17,13 +17,24 @@ export class SkinChanger {
     
     createButton(skin){
         let btn = document.createElement("BUTTON");
+        btn.setAttribute("id", skin);
         btn.innerHTML = skin;
         this.headNode.appendChild(btn);
         btn.addEventListener("click", function(){
             Manager.clearAllChanges();
-            skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css");
+            if(skin.charAt() !== "a"){
+                skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css");
+            } else {
+                console.log("new skin added!");
+                Manager.setSavedSkinValues();
+
+            };
         });
         
+    }
+
+    deleteButtons(){
+        this.skins.forEach(skin => document.querySelector("#" + skin).remove());
     }
 
 
