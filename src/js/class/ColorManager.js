@@ -40,6 +40,7 @@ export class ColorManager{
     // generates Hue Slider by creating a new DOM element. Sets Atrributes and Adds an EventsListener
     createHueSlider(){
         let slider = document.createElement("INPUT");
+        slider.classList.add("slider");
         slider.setAttribute("type", "range");
         slider.setAttribute("id", "hueSlider");
         slider.setAttribute("min", "0");
@@ -52,6 +53,7 @@ export class ColorManager{
     // generates Saturation Slider by creating a new DOM element. Sets Atrributes and Adds an EventsListener
     createSaturationSlider(){
         let slider = document.createElement("INPUT");
+        slider.classList.add("slider");
         slider.setAttribute("type", "range");
         slider.setAttribute("id", "saturationSlider");
         slider.setAttribute("min", "0");
@@ -64,6 +66,7 @@ export class ColorManager{
     // generates Lightness Slider by creating a new DOM element. Sets Atrributes and Adds an EventsListener
     createLightnessSlider(){
         let slider = document.createElement("INPUT");
+        slider.classList.add("slider");
         slider.setAttribute("type", "range");
         slider.setAttribute("id", "lightnessSlider");
         slider.setAttribute("min", "0");
@@ -76,6 +79,7 @@ export class ColorManager{
     // generates Alpha Slider by creating a new DOM element. Sets Atrributes and Adds an EventsListener + callback
     createAlphaSlider(){
         let slider = document.createElement("INPUT");
+        slider.classList.add("slider");
         slider.setAttribute("type", "range");
         slider.setAttribute("id", "alphaSlider");
         slider.setAttribute("min", "0");
@@ -87,13 +91,15 @@ export class ColorManager{
 
     createLinearGradientBtn(){
         let btn = document.createElement("BUTTON");
+        btn.classList.add("gradients");
         btn.setAttribute("id", "linearGradientBtn");
-        btn.innerHTML = "--";
+        btn.innerHTML = "--------";
         this.headnode.appendChild(btn);
         btn.addEventListener("click", this.gradientEventHandler.bind(this));
     }
     createRadialGradientBtn(){
         let btn = document.createElement("BUTTON");
+        btn.classList.add("gradients");
         btn.setAttribute("id", "radialGradientBtn");
         btn.innerHTML = "o";
         this.headnode.appendChild(btn);

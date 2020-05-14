@@ -1,115 +1,148 @@
-.skinPanel{
-	background: url("./src/images/templatemo_banner.png");
-    box-sizing: border-box;
-    border: 2px solid black;
-    float: right;
-    margin: 0 5%;
-    position: relative;
-    height: calc(100vh - 16px);
-    width: 25%;
+:root {
+    --bright-gold-trans: rgba(255, 236, 179, 0.6);
+    --dark-gold-trans: rgba(82, 62, 22,0.6);
+    --dark-gold: rgb(82, 62, 22);
+    --gold: rgb(206, 168, 85);
+    --bright-gold: rgb(255, 236, 179);
+    --gold-glow: rgb(68, 53, 1);
+    --shadow: black;
+
+    --green: #6bd26b;;
 }
 
-.panelLogo {
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    border-bottom: 2px solid black;
+.skinPanel {
+	float: right;
+	border: 2px dotted black;
+	border-radius: 5%;
+	box-sizing: border-box;
+	background: url("../images/skin-panel-background.png") repeat;
+	margin: 0;
+    height: calc(100vh - 20px);
+	width: 30%;
+	max-width: 70%;
+	font-family: Arial, Helvetica, sans-serif;
+
 }
 
-.skinSelect {
-    border: none;
-    width: 100%;
-    margin-top: 2vh;
+.skinPanelBackground{
+	background: url("../images/test.png") no-repeat;
+	position: relative;
+	margin-left: 15%;
+	width: 100%;
+	height: 100%;
+
 }
 
-.skinSelect input[type="radio"] {
-	visibility: hidden;
+.panelContent{
+	position: absolute;
+	display: block;
+	margin-top: 5%;
+	margin-left: 4%;
+	margin-right: 30%;
 }
 
-
-
-.skinSelect > label {
-    display: inline-block;
-	border: 1px solid #333;
-	border-radius: 0.5em;
-	padding: 0.4em 0.3em;
-	width: 4.5em;
+.panelLogo{
+	display: block;
+	box-sizing: border-box;
 	text-align: center;
+
+	padding-top: 7%;
+	padding-bottom: 7%;
+	margin-right: 20%;
+
+	font-size: 1.7vw;
 	font-weight: bold;
-	font-size: 1rem;
-    line-height: 100%;  
+
+	color: #fff;
+	text-shadow:
+	  0 0 5px #fff,
+	  0 0 10px #fff,
+	  0 0 20px #fff,
+	  0 0 40px #0ff,
+	  0 0 80px #0ff,
+	  0 0 90px #0ff,
+	  0 0 100px #0ff,
+	  0 0 150px #0ff;
+
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+		 background-clip: text;
+
 }
 
-.skinSelect input:checked + label {
-	background: #ebf5d7;
-	color: #5a9900;
-	box-shadow: none;
+
+.skinSelector {
+	box-sizing: border-box;
+	padding-left: 5%;
 }
+
+.selectSkin {
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.6);
+	text-align: center;
+	background-color: transparent;
+	border-radius: 20%;
+	margin: 2.5%;
+}
+
+.selectSkin:hover, .selectSkin:focus {
+	cursor: pointer;
+	text-shadow:
+	0 0 5px #fff,
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 40px #0ff,
+	0 0 80px #0ff,
+	0 0 90px #0ff,
+	0 0 100px #0ff,
+	0 0 150px #0ff;
+	
+}
+
 
 .gameboxTitle {
     display: block;
-    position: inherit;
     width: 100%;
-    margin: 2em;
-    box-sizing: border-box;  
+	margin-left: 3em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	box-sizing: border-box;
 }
 
-.colors {
-	display: block;
-	float: left;
+.gameboxTitle  input {
+	background-color: transparent;
 }
 
-.input {
-	float: left;
+.gameboxTitle  input:focus {
+	color: #fff;
+	text-shadow:
+	0 0 5px #fff,
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 40px #0ff;
 }
 
-.colors > button{
-	display: block;
-	float: left;
-}
-
-.select {
-    display: block;
-    margin: 1em;
-}
-
-.actions {
-    position: absolute;
-    bottom: 0px;
-    left: 20%;
-    box-sizing: border-box;
-    margin: 0.1em;
-}
-
-.range > input {
-    cursor: pointer;
-}
-
-/* Teste Button*/
-
- 
 .switch-field {
 	display: flex;
-    margin-bottom: 36px;
-	overflow: hidden;
+    margin-left: 1.8em;
 }
 
 .switch-field input {
 	position: absolute !important;
 	clip: rect(0, 0, 0, 0);
-	height: 24px;
-	width: 24px;
+	height: 22px;
+	width: 22px;
 	border: 0;
-	overflow: hidden;
 }
 
 .switch-field label {
-	background-color: #e4e4e4;
+	background-color: transparent;
 	color: rgba(0, 0, 0, 0.6);
 	font-size: 14px;
+	font-weight: bold;
 	line-height: 1;
 	text-align: center;
 	padding: 8px 16px;
-	margin-right: -1px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 	transition: all 0.1s ease-in-out;
@@ -120,8 +153,13 @@
 }
 
 .switch-field input:checked + label {
-	background-color: #a5dc86;
-	box-shadow: none;
+	background-color: #0ff;
+	border: none;
+	text-shadow:
+	0 0 5px #fff,
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 40px #0ff;
 }
 
 .switch-field label:first-of-type {
@@ -132,4 +170,59 @@
 	border-radius: 0 4px 4px 0;
 }
 
+.slider{
+	display: block;
+	margin-left: 1.8em;
+}
+
+.gradients {
+	font-weight: bold;
+	width: 45%;
+	margin: 1em;
+	color: rgba(0, 0, 0, 0.6);
+	text-align: center;
+	background-color: transparent;
+	border-radius: 20%;
+	margin: 2.5%;
+}
+
+.gradients:hover, .actions button:hover {
+	cursor: pointer;
+	text-shadow:
+	0 0 5px #fff,
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 40px #0ff,
+	0 0 80px #0ff,
+	0 0 90px #0ff,
+	0 0 100px #0ff,
+	0 0 150px #0ff;
+}
+
+#linearGradientBtn:hover {
+    background: linear-gradient(to right, var(--gold) 25%,var(--bright-gold) 60%,var(--dark-gold) 85%, var(--dark-gold) 98%, var(--gold) 100%); 
+}
+
+#radialGradientBTN:hover {
+	background: radial-gradient(ellipse at center, var(--gold-glow) 33%,var(--gold) 66%, var(--bright-gold));
+}
+
+.actions {
+	position: absolute;
+	bottom: 20%;
+	left: 2.5em;
+    box-sizing: border-box;
+}
+
+
+.actions button {
+	cursor: pointer;
+	font-weight: bold;
+	margin: 1em;
+	width: fit-content;
+	color: rgba(0, 0, 0, 0.6);
+	text-align: center;
+	background-color: transparent;
+	border-radius: 20%;
+}
 

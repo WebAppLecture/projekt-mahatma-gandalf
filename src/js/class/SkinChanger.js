@@ -19,6 +19,7 @@ export class SkinChanger {
         let btn = document.createElement("BUTTON");
         btn.setAttribute("id", skin);
         btn.innerHTML = skin;
+        btn.classList.add("selectSkin");
         this.headNode.appendChild(btn);
         btn.addEventListener("click", function(){
             Manager.clearAllChanges();
