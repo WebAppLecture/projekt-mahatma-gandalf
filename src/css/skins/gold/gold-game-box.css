@@ -1,3 +1,5 @@
+/* von Louis Ritzkowski */
+
 body {
     background: radial-gradient(ellipse at center, var(--gold-glow) 50%,var(--shadow) 100%);
 }
