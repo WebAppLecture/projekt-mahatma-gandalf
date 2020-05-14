@@ -11,44 +11,42 @@
 }
 
 .skinPanel {
+	position: relative;
 	float: right;
+	background: url("../images/skin-panel-background.png");
+	box-sizing: border-box;
 	border: 2px dotted black;
 	border-radius: 5%;
-	box-sizing: border-box;
-	background: url("../images/skin-panel-background.png") repeat;
-	margin: 0;
-    height: calc(100vh - 20px);
+
+    height: calc(100vh - 16px);
 	width: 30%;
-	max-width: 70%;
+
 	font-family: Arial, Helvetica, sans-serif;
 
+	border: 2px dotted red;
 }
 
-.skinPanelBackground{
-	background: url("../images/test.png") no-repeat;
-	position: relative;
-	margin-left: 15%;
-	width: 100%;
-	height: 100%;
-
-}
 
 .panelContent{
-	position: absolute;
+	background: url("../images/skin-panel.jpg");
+	background-size: cover;
+	width: 60%;
+	height: 80%;
+	min-width: 50%;
 	display: block;
-	margin-top: 5%;
-	margin-left: 4%;
-	margin-right: 30%;
+	margin: auto;
+	margin-top: 3em;
+	box-sizing: border-box;
+	border: 2px dotted red;	
+	border-radius: 5%;
 }
 
 .panelLogo{
 	display: block;
 	box-sizing: border-box;
-	text-align: center;
-
-	padding-top: 7%;
-	padding-bottom: 7%;
-	margin-right: 20%;
+	margin-top: 10%;
+	margin-left: 10%;
+	margin-bottom: 5%;
 
 	font-size: 1.7vw;
 	font-weight: bold;
@@ -73,10 +71,10 @@
 
 .skinSelector {
 	box-sizing: border-box;
-	padding-left: 5%;
 }
 
 .selectSkin {
+	position: relative;
 	font-weight: bold;
 	color: rgba(0, 0, 0, 0.6);
 	text-align: center;
@@ -101,11 +99,8 @@
 
 
 .gameboxTitle {
-    display: block;
-    width: 100%;
-	margin-left: 3em;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	display: block;
+	margin: 10%;
 	box-sizing: border-box;
 }
 
@@ -124,11 +119,11 @@
 
 .switch-field {
 	display: flex;
-    margin-left: 1.8em;
+    margin-left: 0.7em;
 }
 
 .switch-field input {
-	position: absolute !important;
+	position: absolute;
 	clip: rect(0, 0, 0, 0);
 	height: 22px;
 	width: 22px;
@@ -178,7 +173,7 @@
 .gradients {
 	font-weight: bold;
 	width: 45%;
-	margin: 1em;
+	margin: auto;
 	color: rgba(0, 0, 0, 0.6);
 	text-align: center;
 	background-color: transparent;
@@ -207,22 +202,25 @@
 	background: radial-gradient(ellipse at center, var(--gold-glow) 33%,var(--gold) 66%, var(--bright-gold));
 }
 
-.actions {
+.actions{
 	position: absolute;
-	bottom: 20%;
-	left: 2.5em;
-    box-sizing: border-box;
+	bottom: 15%;
 }
-
 
 .actions button {
 	cursor: pointer;
 	font-weight: bold;
-	margin: 1em;
-	width: fit-content;
+	margin-left: 1.5em;
 	color: rgba(0, 0, 0, 0.6);
-	text-align: center;
 	background-color: transparent;
 	border-radius: 20%;
+}
+
+#saveBtn{
+	background-color: #0ff;
+}
+
+#resetBtn{
+	background-color: red;
 }
 
