@@ -22,11 +22,11 @@ export class SkinChanger {
         this.headNode.appendChild(btn);
         btn.addEventListener("click", function(){
             Manager.clearAllChanges();
-            if(skin.charAt() !== "a"){
+            if(skin.charAt() !== "x"){
                 skinsheet.setAttribute("href", "./src/css/skins/" + skin + "/" + skin + ".css");
             } else {
                 console.log("new skin added!");
-                Manager.setSavedSkinValues();
+                Manager.setSavedSkinValues(skin);
 
             };
         });

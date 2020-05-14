@@ -1,6 +1,7 @@
 import { SkinChanger } from "./class/SkinChanger.js";
 import { ColorManager } from "./class/ColorManager.js";
 import { Manager } from "./class/Manager.js";
+import { Tutorial } from "./class/Tutorial.js";
 
 let headnode = document.querySelector(".skinSelector"),
     headnodeColor = document.querySelector(".colors"),
@@ -25,9 +26,12 @@ function init(){
     initSwitch();
     initResetButton();  
     initSaveButton();
+    initTutorial();
 }
 
-
+function initTutorial(){
+    window.tutorial = new Tutorial();
+}
 
 function initColorManager(){
     window.colorManager =  new ColorManager(headnodeColor, targetColorGB);
@@ -73,4 +77,5 @@ function setTitle(event) {
         outputTitle.textContent = "GameBox";
     }
 }
+
 init();

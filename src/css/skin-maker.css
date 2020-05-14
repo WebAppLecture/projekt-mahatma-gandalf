@@ -1,5 +1,5 @@
 .skinPanel{
-    background-color: lightblue;
+	background: url("./src/images/templatemo_banner.png");
     box-sizing: border-box;
     border: 2px solid black;
     float: right;
@@ -54,10 +54,16 @@
 }
 
 .colors {
-    display: block;
+	display: block;
+	float: left;
 }
 
-.colors button{
+.input {
+	float: left;
+}
+
+.colors > button{
+	display: block;
 	float: left;
 }
 

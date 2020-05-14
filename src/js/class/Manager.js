@@ -16,10 +16,12 @@ export class Manager{
         let name = Manager.getValidName(skins);
         if(name){
             skins.push(name);
-            Manager.getAllChanges();         
+            let savedObj = Manager.getAllChanges();
+            console.log("ready to save Object", savedObj, "to localeStroage with key:", name);
+            localStorage.setItem(name, JSON.stringify(savedObj));
+    
         }
 
-        //localStorage.setItem(name, JSON.stringify("saveObject"));
     }
 
     static getAllChanges(){
@@ -28,20 +30,40 @@ export class Manager{
         gameboxValue = gameBoxstyle.backgroundImage !== "none" ? gameBoxstyle.backgroundImage : gameBoxstyle.backgroundColor,
         gameboxProperty = gameBoxstyle.backgroundImage !== "none" ? "background-image:" : "background-color:",
         gameboxSelektor = ".gamebox",
-        gameboxCss = `${gameboxSelektor} { ${gameboxProperty} ${gameboxValue};}`;
-        window.saveSkin = {Gamebox: gameboxCss};
-        console.log(saveSkin.Gamebox);
-        //let test = localStorage.getItem(localStorage.key(0));
-        //console.log(test);
+        gameboxCss = `${gameboxSelektor} { ${gameboxProperty} ${gameboxValue};}`,
+        controls = Manager.CONFIG.controlNodes[0],
+        controlsStyle = getComputedStyle(controls, null),
+        controlsValue = controlsStyle.backgroundImage !== "none"? controlsStyle.backgroundImage : controlsStyle.backgroundColor,
+        controlsProperty = controlsStyle.backgroundImage !== "none"? "background-image:" : "background-color:",
+        controlsSelektor = ".controls > div, .skin-change > div",
+        controlsCss = `${controlsSelektor} { ${controlsProperty} ${controlsValue};}`,
+        saveSkin = {Gamebox: gameboxCss,
+                         Controls: controlsCss};
+        return saveSkin;
+
     }
 
-    static setSavedSkinValues(){
+    static setSavedSkinValues(skin){
+        Manager.clearStyleElement();
         let head = document.querySelector("head"),
         style = document.createElement("style");
         head.appendChild(style);
         style.type = "text/css";
-        style.innerHTML = saveSkin.Gamebox;
+        let skinObj = JSON.parse(localStorage.getItem(skin));
+        const cssValue = Object.values(skinObj);
+        var resultCss = "";
+        for(const value of cssValue){
+            resultCss += value;
+        }
+        console.log(resultCss);
+        style.innerHTML = resultCss;
+    }
 
+    static clearStyleElement(){
+        let style = document.querySelector("style");
+        if(style){
+            style.remove();
+        }
     }
 
 
@@ -49,6 +71,8 @@ export class Manager{
     static getValidName(skins){
         let name = document.querySelector(".logo").innerHTML,
             nameLC = name.toLocaleLowerCase();
+        nameLC = nameLC.charAt() !== "x"? "x" + nameLC: nameLC;
+        console.log(nameLC);
         if(skins.includes(nameLC) ){
             alert("Please provide a unique Name");
     
