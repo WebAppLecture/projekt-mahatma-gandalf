@@ -12,18 +12,22 @@ export class Manager{
         }
     }
 
+    //sichert alle Änderungen (neuer skin) im locale Storage
     static saveAllChanges(skins){
         let name = Manager.getValidName(skins);
         if(name){
             skins.push(name);
             let savedObj = Manager.getAllChanges();
-            console.log("ready to save Object", savedObj, "to localeStroage with key:", name);
             localStorage.setItem(name, JSON.stringify(savedObj));
     
         }
 
     }
 
+    /*
+    -holt die aktuellen gesetzten Styles und speichert sie im saveSkin Object. 
+    - die Values des Objekts sind bereits so Formatiert, dass Sie als css value verwendet werden können
+    */
     static getAllChanges(){
         let gamebox = Manager.CONFIG.gameboxNode,
         gameBoxstyle = getComputedStyle(gamebox, null),
@@ -43,6 +47,7 @@ export class Manager{
 
     }
 
+    //setzt erstellt <style> Knoten im DOM und setzt sich gleich der im locale St
     static setSavedSkinValues(skin){
         Manager.clearStyleElement();
         let head = document.querySelector("head"),
@@ -59,6 +64,7 @@ export class Manager{
         style.innerHTML = resultCss;
     }
 
+    //löscht das Style Element aus dem DOM
     static clearStyleElement(){
         let style = document.querySelector("style");
         if(style){
@@ -67,7 +73,7 @@ export class Manager{
     }
 
 
-
+    //überprüft ob der Name valide ist. (Momentan nicht wirklich sinnhaft)
     static getValidName(skins){
         let name = document.querySelector(".logo").innerHTML,
             nameLC = name.toLocaleLowerCase();

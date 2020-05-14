@@ -1,5 +1,6 @@
 export class Tutorial{
 
+    //Klasse zur Erstellung des Tutorials. Noch nicht fertig Implementiert
     constructor(){
         this.headNode = document.querySelector(".tutorial"),
         this.tutorialNode = document.querySelector(".cnt"),

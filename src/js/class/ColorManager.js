@@ -2,7 +2,9 @@
  - implements the slider for hue, saturation, lightness, alpha
  - adds eventListeners to each slider
  - handles inputs and computes the hsla output String
- - sets the backgroundcolor of each targetNode via hsla String */
+ - sets the backgroundcolor of each targetNode via hsla String 
+ - zeigen, dass ich Englisch kann ... oder auch nicht
+ */
 
 import { Manager } from "./Manager.js";
 
@@ -22,7 +24,7 @@ export class ColorManager{
 
 
     
-    // inits all Slider 
+    // initialisert alle Slider
     initSlider(){
         this.createHueSlider();
         this.createSaturationSlider();
@@ -30,6 +32,7 @@ export class ColorManager{
         this.createAlphaSlider();
     }
 
+    //initialisert die GradientBtns
     initGradientBtns(){
         this.createLinearGradientBtn();
         this.createRadialGradientBtn();
@@ -42,6 +45,7 @@ export class ColorManager{
         let slider = document.createElement("INPUT");
         slider.classList.add("slider");
         slider.setAttribute("type", "range");
+        slider.setAttribute("title", "Hue");
         slider.setAttribute("id", "hueSlider");
         slider.setAttribute("min", "0");
         slider.setAttribute("max", "360");
@@ -55,6 +59,7 @@ export class ColorManager{
         let slider = document.createElement("INPUT");
         slider.classList.add("slider");
         slider.setAttribute("type", "range");
+        slider.setAttribute("title", "Saturation");
         slider.setAttribute("id", "saturationSlider");
         slider.setAttribute("min", "0");
         slider.setAttribute("max", "100");
@@ -68,6 +73,7 @@ export class ColorManager{
         let slider = document.createElement("INPUT");
         slider.classList.add("slider");
         slider.setAttribute("type", "range");
+        slider.setAttribute("title", "Lightness");
         slider.setAttribute("id", "lightnessSlider");
         slider.setAttribute("min", "0");
         slider.setAttribute("max", "100");
@@ -81,6 +87,7 @@ export class ColorManager{
         let slider = document.createElement("INPUT");
         slider.classList.add("slider");
         slider.setAttribute("type", "range");
+        slider.setAttribute("title", "alpha");
         slider.setAttribute("id", "alphaSlider");
         slider.setAttribute("min", "0");
         slider.setAttribute("max", "1");
@@ -89,23 +96,34 @@ export class ColorManager{
         slider.addEventListener("input",this.sliderEventHandler.bind(this))
     }
 
+    //erstellt den LinearGradientButton
     createLinearGradientBtn(){
         let btn = document.createElement("BUTTON");
         btn.classList.add("gradients");
         btn.setAttribute("id", "linearGradientBtn");
+        btn.setAttribute("title", "Set Linear Gradient");
         btn.innerHTML = "--------";
         this.headnode.appendChild(btn);
         btn.addEventListener("click", this.gradientEventHandler.bind(this));
     }
+
+    //Erstellt den RadialGradientBtn
     createRadialGradientBtn(){
         let btn = document.createElement("BUTTON");
         btn.classList.add("gradients");
         btn.setAttribute("id", "radialGradientBtn");
+        btn.setAttribute("title", "Set Radial Gradient");
         btn.innerHTML = "o";
         this.headnode.appendChild(btn);
         btn.addEventListener("click", this.gradientEventHandler.bind(this));
     }
 
+    /*Erstellt die Callbacks für die Gradients.
+    - Für den Lineargradient werden vom Manager Schatten Abstufungen der aktuellen Farbe errechnet,
+    und als Array zurückgegeben. 
+    - Für den  Radialgradient wird die komplementärfarbe errechnet und verwendet
+    - der resultgradientstring wird je nach eingabe der Btns generiert und gesetzt.
+    */
     gradientEventHandler(event){
         let gradientResultString = "",
             computedColor = Manager.computeShadowOfCurrentColor(this.hue, this.saturation, this.lightness, this.alpha),
@@ -124,6 +142,7 @@ export class ColorManager{
                 break;
         }
 
+        //überprüft ob sich mehrer ZielKnoten befinden und setzte alle style gleich dem generierten Resultgradient String
         if(this.targetNode.length){
             this.targetNode.forEach(element => { element.style.backgroundImage = gradientResultString;                
         });} else {this.targetNode.style.backgroundImage = gradientResultString;

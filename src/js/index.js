@@ -3,6 +3,7 @@ import { ColorManager } from "./class/ColorManager.js";
 import { Manager } from "./class/Manager.js";
 import { Tutorial } from "./class/Tutorial.js";
 
+
 let headnode = document.querySelector(".skinSelector"),
     headnodeColor = document.querySelector(".colors"),
     targetColorGB = document.querySelector(".gamebox"),
@@ -29,18 +30,22 @@ function init(){
     initTutorial();
 }
 
+//Initialisiert das Tutorial. (noch nicht fertig deshalb noch display: none)
 function initTutorial(){
     window.tutorial = new Tutorial();
 }
 
+//Initialisiert den Colormanager
 function initColorManager(){
     window.colorManager =  new ColorManager(headnodeColor, targetColorGB);
 }
 
+//Initialisiert den SKinChanegr
 function initSkins(){
     window.skinChanger = new SkinChanger(headnode, skins, skinsheet);
 }
 
+//Initialisiert den Switch bei dem man zwischen der Bearbeitung der Gamebox oder der COntrols hin und her wechseln kann
 function initSwitch(){
     swtch1.addEventListener("click", function(){
         window.colorManager.targetNode = targetColorGB;
@@ -50,17 +55,14 @@ function initSwitch(){
     });
 }
 
-function initTitleChanger(){
-    inputTitle.value = "";
-    inputTitle.addEventListener("input", setTitle);
-}
 
+//Initialisiert den reset Button 
 function initResetButton(){
     resetBtn.addEventListener("click", Manager.clearAllChanges);
 }
 
 
-
+//Initialisiert den Save Button
 function initSaveButton(){
     saveBtn.addEventListener("click", function(){
         skinChanger.deleteButtons();
@@ -71,6 +73,13 @@ function initSaveButton(){
 
 }
 
+//Funktion zum setzten des Eventlisteners auf den TitelInput
+function initTitleChanger(){
+    inputTitle.value = "";
+    inputTitle.addEventListener("input", setTitle);
+}
+
+//CallbackFunktion zur Änderung des Gamebox namens
 function setTitle(event) {
     outputTitle.textContent = event.target.value;
     if(outputTitle.textContent == "") {

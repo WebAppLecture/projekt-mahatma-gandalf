@@ -1,5 +1,6 @@
 import { Manager } from "./Manager.js";
 
+// class SkinChanger zur dynamischen erstellung der Skinbuttons
 
 export class SkinChanger {
 
@@ -10,11 +11,17 @@ export class SkinChanger {
         this.initskins();
     }
 
+    //erstellt für jeden skin im skins array einen clickable Button
     initskins(){
         this.skins.forEach(skin => { this.createButton(skin)   
         });;
     }
     
+    /*
+    erstellt ein button und fügt ein EventListener hinzu. Je nach Art des skins (vorgefertigt/neu erstellt),
+     wird eine unterschiedliche callback funktion definiert. Neue skins kriegen als erste char ein x als identifier und werden so
+     identifiziert.
+     */
     createButton(skin){
         let btn = document.createElement("BUTTON");
         btn.setAttribute("id", skin);
@@ -30,38 +37,11 @@ export class SkinChanger {
                 Manager.setSavedSkinValues(skin);
 
             };
-        });
-        
+        }); 
     }
 
+    //löscht alle erstellte skinButtons
     deleteButtons(){
         this.skins.forEach(skin => document.querySelector("#" + skin).remove());
     }
-
-
-    /*
-    set activeSkin(name) {
-        if(this.skins.includes(name)) {
-            this._activeSkin = name;
-            this.target.setAttribute("href", this.path + name + "/" + name + ".css");
-        }
-    }
-
-    get activeSkin() {
-        return this._activeSkin;
-    }
-
-    next() {
-        let index = this.skins.indexOf(this._activeSkin) + 1;
-        index = index >= this.skins.length ? 0 : index;
-        this.activeSkin = this.skins[index];
-    }
-
-    previous() {
-        let index = this.skins.indexOf(this._activeSkin) - 1;
-        index = index < 0 ? this.skins.length - 1 : index;
-        this.activeSkin = this.skins[index];
-    }
-    */
-
 }
